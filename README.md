@@ -18,7 +18,8 @@ Gra tworzona jako projekt zaliczeniowy w ramach przedmiotu **Programowanie Multi
 
 1. Sklonuj repozytorium:
    ```bash
-   git clone <adres-repozytorium>
+   git clone git@github.com:DudeQ7/Borraci_kombat.git (SSH)
+   git clone https://github.com/DudeQ7/Borraci_kombat.git (HTTPS)
    ```
 2. Otwórz Unity Hub i wybierz **Add → Add project from disk**.
 3. Wskaż folder sklonowanego projektu.
