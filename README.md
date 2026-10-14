@@ -2,6 +2,8 @@
 
 Gra tworzona jako projekt zaliczeniowy w ramach przedmiotu **Programowanie Multimediów**.
 
+# ![Unity 6000.6.4f1](https://img.shields.io/badge/UNITY-6000.6.4f1-FF0099?style=for-the-badge&logo=unity&logoColor=white)
+
 ## Informacje o projekcie
 
 | Element | Wartość |
