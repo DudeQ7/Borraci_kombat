@@ -1,61 +1,116 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-public class Example : MonoBehaviour
+using TMPro;
+using System.Collections;
+
+public class PlayerMovement : MonoBehaviour
 {
-    private float playerSpeed = 5.0f;
-    private float jumpHeight = 1.5f;
-    private float gravityValue = -9.81f;
+    public float speed = 5f;
+    public float sprintMultiplier = 2f;
+    public float fallLimit = -5f;
 
-    public CharacterController controller;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
+    public TextMeshProUGUI respawnText;
+    public float messageDuration = 3f;
 
-    [Header("Input Actions")]
-    public InputActionReference moveAction;
-    public InputActionReference jumpAction;
+    public AudioSource footstepsAudio;
 
-    private void OnEnable()
+    private Vector3 startPosition;
+    private Rigidbody rb;
+    private Coroutine messageCoroutine;
+
+    [SerializeField] bool left = true;
+    private UnityEngine.KeyCode[] movementKeys = new UnityEngine.KeyCode[] { KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.S };
+    void Start()
     {
-        moveAction.action.Enable();
-        jumpAction.action.Enable();
+        if (left)
+        {
+            movementKeys[0] = KeyCode.A;
+            movementKeys[1] = KeyCode.D;
+            movementKeys[2] = KeyCode.W;
+            movementKeys[3] = KeyCode.S;
+        }
+        else
+        {
+            movementKeys[0] = KeyCode.LeftArrow;
+            movementKeys[1] = KeyCode.RightArrow;
+            movementKeys[2] = KeyCode.UpArrow;
+            movementKeys[3] = KeyCode.DownArrow;
+        }
+        startPosition = transform.position;
+        rb = GetComponent<Rigidbody>();
+        if (respawnText != null)
+            respawnText.gameObject.SetActive(false);
     }
 
-    private void OnDisable()
-    {
-        moveAction.action.Disable();
-        jumpAction.action.Disable();
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
+        float horizontal = 0f;
+        float vertical = 0f;
+        float height = 0f;
+        if (Input.GetKey(movementKeys[0]))
+            horizontal = -1f;
+        if (Input.GetKey(movementKeys[1]))
+            horizontal = 1f;
+        if (Input.GetKey(movementKeys[2]))
+            vertical = 1f;
+        if (Input.GetKey(movementKeys[3]))
+            vertical = -1f;
 
-        if (groundedPlayer)
+        float currentSpeed = speed;
+        Vector3 movement = new Vector3(horizontal, height, vertical);
+        transform.Translate(movement.normalized * currentSpeed * Time.deltaTime, Space.World);
+
+        if (footstepsAudio != null)
         {
-            // Slight downward velocity to keep grounded stable
-            if (playerVelocity.y < -2f)
-                playerVelocity.y = -2f;
+            if (movement.magnitude > 0f)
+            {
+                if (!footstepsAudio.isPlaying)
+                    footstepsAudio.Play();
+            }
+            else
+            {
+                if (footstepsAudio.isPlaying)
+                    footstepsAudio.Stop();
+            }
         }
 
-        // Read input
-        Vector2 input = moveAction.action.ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x, 0, input.y);
-        move = Vector3.ClampMagnitude(move, 1f);
-
-        if (move != Vector3.zero)
-            transform.forward = move;
-
-        // Jump using WasPressedThisFrame()
-        if (groundedPlayer && jumpAction.action.WasPressedThisFrame())
+        if (transform.position.y < fallLimit)
         {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
+            Respawn();
+        }
+    }
+
+    void Respawn()
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.position = startPosition;
+        }
+        else
+        {
+            transform.position = startPosition;
         }
 
-        // Apply gravity
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        if (footstepsAudio != null)
+            footstepsAudio.Stop();
 
-        // Move
-        Vector3 finalMove = move * playerSpeed + Vector3.up * playerVelocity.y;
-        controller.Move(finalMove * Time.deltaTime);
+        if (respawnText != null)
+        {
+            if (messageCoroutine != null)
+                StopCoroutine(messageCoroutine);
+            messageCoroutine = StartCoroutine(ShowRespawnMessage());
+        }
+        Debug.Log("Respawn! Powrot na start!");
+    }
+    IEnumerator ShowRespawnMessage()
+    {
+        respawnText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(messageDuration);
+
+        respawnText.gameObject.SetActive(false);
+        messageCoroutine = null;
     }
 }
