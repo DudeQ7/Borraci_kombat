@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-
+using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
@@ -16,9 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 startPosition;
     private Rigidbody rb;
     private Coroutine messageCoroutine;
-
     [SerializeField] bool left = true;
     private UnityEngine.KeyCode[] movementKeys = new UnityEngine.KeyCode[] { KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.S };
+
     void Start()
     {
         if (left)

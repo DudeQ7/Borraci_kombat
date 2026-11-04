@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 317453099}
   - component: {fileID: 317453098}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: BluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,15 +375,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 317453091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f43e894a7f494844ac8e66aaff757d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1adb75ec260ec904fa70ea5e6ae7934b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
   sprintMultiplier: 2
   fallLimit: -5
-  respawnText: {fileID: 764004856}
+  respawnText: {fileID: 0}
   messageDuration: 3
-  footstepsAudio: {fileID: 317453099}
+  footstepsAudio: {fileID: 0}
+  left: 1
 --- !u!82 &317453099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -929,11 +930,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434588945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.25408, y: 4, z: -0.26807}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.028529644, y: -0.19750023, z: 0.49999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 522730804}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &522730803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522730804}
+  m_Layer: 0
+  m_Name: Collectibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522730804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522730803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.22555, y: 4.1975, z: -0.76807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 434588949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764004854
@@ -948,7 +981,7 @@ GameObject:
   - component: {fileID: 764004857}
   - component: {fileID: 764004856}
   m_Layer: 5
-  m_Name: redwin
+  m_Name: RedWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1429,7 +1462,7 @@ GameObject:
   - component: {fileID: 1162835347}
   - component: {fileID: 1162835346}
   m_Layer: 5
-  m_Name: bluewin
+  m_Name: BlueWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1564,7 +1597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477202243}
   m_Layer: 0
-  m_Name: midle_point
+  m_Name: Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,9 +1634,8 @@ GameObject:
   - component: {fileID: 1907682619}
   - component: {fileID: 1907682618}
   - component: {fileID: 1907682617}
-  - component: {fileID: 1907682623}
   m_Layer: 0
-  m_Name: Cubesquer
+  m_Name: RedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1826,24 +1858,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907682614}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1907682623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907682614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50efa7639789df4489a240c2ddeffefb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player2Movement
-  speed: 5
-  sprintMultiplier: 2
-  fallLimit: -5
-  respawnText: {fileID: 1162835346}
-  messageDuration: 3
-  footstepsAudio: {fileID: 1907682617}
 --- !u!1 &1952922901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,5 +1982,5 @@ SceneRoots:
   - {fileID: 1477202243}
   - {fileID: 330585546}
   - {fileID: 1952922905}
-  - {fileID: 434588949}
   - {fileID: 824747162}
+  - {fileID: 522730804}
