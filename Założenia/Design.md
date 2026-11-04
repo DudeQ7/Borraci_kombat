@@ -1,0 +1,1 @@
+# Tutaj powinny byc wypisane zalozenia dotyczace wyglądu
