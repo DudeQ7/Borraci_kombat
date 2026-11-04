@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 317453092}
   - component: {fileID: 317453097}
   - component: {fileID: 317453099}
-  - component: {fileID: 317453098}
+  - component: {fileID: 317453100}
   m_Layer: 0
   m_Name: BluePlayer
   m_TagString: Untagged
@@ -366,28 +366,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &317453098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317453091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adb75ec260ec904fa70ea5e6ae7934b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-<<<<<<< HEAD:Assets/Scenes/Główna_scena.unity
-  speed: 5
-  sprintMultiplier: 2
-  fallLimit: -5
-  respawnText: {fileID: 0}
-  messageDuration: 3
-  footstepsAudio: {fileID: 0}
-  left: 1
-=======
->>>>>>> e52ecfcdf2ddfc0bd83f6ad2a54ccc36ae5c8d57:Assets/Scenes/SampleScene.unity
 --- !u!82 &317453099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -485,6 +463,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &317453100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317453091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc925002bb78ff94ea1a34d7dd37fcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviour
+  speed: 5
+  jumpHeight: 2
+  gravity: -9.81
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,6 +1630,7 @@ GameObject:
   - component: {fileID: 1907682619}
   - component: {fileID: 1907682618}
   - component: {fileID: 1907682617}
+  - component: {fileID: 1907682622}
   m_Layer: 0
   m_Name: RedPlayer
   m_TagString: Untagged
@@ -1861,9 +1855,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907682614}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD:Assets/Scenes/Główna_scena.unity
-=======
---- !u!114 &1907682623
+--- !u!114 &1907682622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1872,10 +1864,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1907682614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50efa7639789df4489a240c2ddeffefb, type: 3}
+  m_Script: {fileID: 11500000, guid: bc925002bb78ff94ea1a34d7dd37fcc9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player2Movement
->>>>>>> e52ecfcdf2ddfc0bd83f6ad2a54ccc36ae5c8d57:Assets/Scenes/SampleScene.unity
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviour
+  speed: 5
+  jumpHeight: 2
+  gravity: -9.81
 --- !u!1 &1952922901
 GameObject:
   m_ObjectHideFlags: 0
