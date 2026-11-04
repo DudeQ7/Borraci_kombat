@@ -378,6 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adb75ec260ec904fa70ea5e6ae7934b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+<<<<<<< HEAD:Assets/Scenes/Główna_scena.unity
   speed: 5
   sprintMultiplier: 2
   fallLimit: -5
@@ -385,6 +386,8 @@ MonoBehaviour:
   messageDuration: 3
   footstepsAudio: {fileID: 0}
   left: 1
+=======
+>>>>>>> e52ecfcdf2ddfc0bd83f6ad2a54ccc36ae5c8d57:Assets/Scenes/SampleScene.unity
 --- !u!82 &317453099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1858,6 +1861,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907682614}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD:Assets/Scenes/Główna_scena.unity
+=======
+--- !u!114 &1907682623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907682614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50efa7639789df4489a240c2ddeffefb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2Movement
+>>>>>>> e52ecfcdf2ddfc0bd83f6ad2a54ccc36ae5c8d57:Assets/Scenes/SampleScene.unity
 --- !u!1 &1952922901
 GameObject:
   m_ObjectHideFlags: 0
