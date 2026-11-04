@@ -378,12 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f43e894a7f494844ac8e66aaff757d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 5
-  sprintMultiplier: 2
-  fallLimit: -5
-  respawnText: {fileID: 764004856}
-  messageDuration: 3
-  footstepsAudio: {fileID: 317453099}
 --- !u!82 &317453099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1838,12 +1832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50efa7639789df4489a240c2ddeffefb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2Movement
-  speed: 5
-  sprintMultiplier: 2
-  fallLimit: -5
-  respawnText: {fileID: 1162835346}
-  messageDuration: 3
-  footstepsAudio: {fileID: 1907682617}
 --- !u!1 &1952922901
 GameObject:
   m_ObjectHideFlags: 0
