@@ -269,7 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869d1b8f743bda04fad2a053a9d65d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
+  mult: 250
+  shake: 20
   time: 99
+  timer: {fileID: 0}
 --- !u!1 &1535311492
 GameObject:
   m_ObjectHideFlags: 0
