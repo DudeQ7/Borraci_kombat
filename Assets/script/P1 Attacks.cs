@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class P1Attacks : MonoBehaviour
 {
-    int dmg;
+    public PlayerBehaviour p1;
+    public PlayerBehaviour p2;
     public Punch Punche;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,7 +14,6 @@ public class P1Attacks : MonoBehaviour
 
     private void Awake()
     {
-        dmg = 0;
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class P1Attacks : MonoBehaviour
         
         IEnumerator punch()
         {
-        dmg = 5;
+        p1.dmg = 5;
             for(int i=0; i<5; i++)
         {
             yield return null;
@@ -39,4 +39,10 @@ public class P1Attacks : MonoBehaviour
         }
         Punche.gameObject.SetActive(false);
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        p2.health -= p1.dmg;
+    }
 }
+
