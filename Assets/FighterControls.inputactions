@@ -1,6 +1,149 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "FighterControls",
-    "maps": [],
+    "maps": [
+        {
+            "name": "Player1",
+            "id": "d147ce6c-ff79-4683-9f18-e72505951fc1",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "ed1fde28-4f8a-4a88-866d-80c123e276bf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "1d282b29-5e5b-4571-aa69-79231fabccfb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "22f06c7b-45f4-4860-8590-910427cc3274",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5ce3e47f-555e-4c0a-a274-da82e0fcf307",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ec1dce2-f01b-492d-91d4-65ed5e076636",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c764909-4f1a-4ca5-8de3-8bb2f9e2a8fa",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2",
+            "id": "367cd6ff-3ed6-40c0-9c86-9fb6a68026f1",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "48175fc0-3ba1-47ce-b67b-d1054cd53129",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "6fefdf81-e7b4-4027-92fe-f732d1a2d8fd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "461534ad-e488-4470-b20f-fc502360dc92",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3092b090-f742-413b-a281-8514f6752337",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cce4089-a608-4169-ace6-0aee6164a68b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e78d5677-0cfd-4262-9446-a6b771951d24",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }
