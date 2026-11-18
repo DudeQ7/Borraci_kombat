@@ -1,116 +1,27 @@
-using UnityEngine;
-using TMPro;
-using System.Collections;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerMovement : MonoBehaviour
+public class NewMonoBehaviour : MonoBehaviour
 {
-    public float speed = 5f;
-    public float sprintMultiplier = 2f;
-    public float fallLimit = -5f;
-
-    public TextMeshProUGUI respawnText;
-    public float messageDuration = 3f;
-
-    public AudioSource footstepsAudio;
-
-    private Vector3 startPosition;
-    private Rigidbody rb;
-    private Coroutine messageCoroutine;
-    [SerializeField] bool left = true;
-    private UnityEngine.KeyCode[] movementKeys = new UnityEngine.KeyCode[] { KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.S };
-
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpHeight = 2f;
+    [SerializeField] private float gravity = -9.81f;
+    private CharacterController controller;
+    private Vector3 moveInput;
+    private Vector3 velocity;
     void Start()
     {
-        if (left)
-        {
-            movementKeys[0] = KeyCode.A;
-            movementKeys[1] = KeyCode.D;
-            movementKeys[2] = KeyCode.W;
-            movementKeys[3] = KeyCode.S;
-        }
-        else
-        {
-            movementKeys[0] = KeyCode.LeftArrow;
-            movementKeys[1] = KeyCode.RightArrow;
-            movementKeys[2] = KeyCode.UpArrow;
-            movementKeys[3] = KeyCode.DownArrow;
-        }
-        startPosition = transform.position;
-        rb = GetComponent<Rigidbody>();
-        if (respawnText != null)
-            respawnText.gameObject.SetActive(false);
+        controller = GetComponent<CharacterController>();
+     }
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+        Debug.Log($"Move Input: {moveInput}");
     }
-
-    // Update is called once per frame
+    //dokoncz 5:20 - https://www.youtube.com/watch?v=qEtLamo_-_g 
     void Update()
     {
-        float horizontal = 0f;
-        float vertical = 0f;
-        float height = 0f;
-        if (Input.GetKey(movementKeys[0]))
-            horizontal = -1f;
-        if (Input.GetKey(movementKeys[1]))
-            horizontal = 1f;
-        if (Input.GetKey(movementKeys[2]))
-            vertical = 1f;
-        if (Input.GetKey(movementKeys[3]))
-            vertical = -1f;
-
-        float currentSpeed = speed;
-        Vector3 movement = new Vector3(horizontal, height, vertical);
-        transform.Translate(movement.normalized * currentSpeed * Time.deltaTime, Space.World);
-
-        if (footstepsAudio != null)
-        {
-            if (movement.magnitude > 0f)
-            {
-                if (!footstepsAudio.isPlaying)
-                    footstepsAudio.Play();
-            }
-            else
-            {
-                if (footstepsAudio.isPlaying)
-                    footstepsAudio.Stop();
-            }
-        }
-
-        if (transform.position.y < fallLimit)
-        {
-            Respawn();
-        }
+        
     }
 
-    void Respawn()
-    {
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.position = startPosition;
-        }
-        else
-        {
-            transform.position = startPosition;
-        }
-
-        if (footstepsAudio != null)
-            footstepsAudio.Stop();
-
-        if (respawnText != null)
-        {
-            if (messageCoroutine != null)
-                StopCoroutine(messageCoroutine);
-            messageCoroutine = StartCoroutine(ShowRespawnMessage());
-        }
-        Debug.Log("Respawn! Powrot na start!");
-    }
-    IEnumerator ShowRespawnMessage()
-    {
-        respawnText.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(messageDuration);
-
-        respawnText.gameObject.SetActive(false);
-        messageCoroutine = null;
-    }
 }
+
