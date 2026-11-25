@@ -6,13 +6,28 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference moveAction, punchAction, jumpAction;
     private float moveX,X,Y,Z;
     public float speed = 5f,jumpForce =10f;
-    private bool isJumping, isPunching;
+    private bool isJumping, isPunching,isGrounded = false;
    
     void Start()
     {
         rb = GetComponent<Rigidbody>();    
     }
-    private void OnEnable()
+    void OnCollisionStay(Collision collison)
+    {
+        if (collison.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+        
+    }
+    void OnCollisionExit(Collision collison)
+    {
+        if (collison.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+    void OnEnable()
     {
         moveAction.action.Enable();
         punchAction.action.Enable();
@@ -29,13 +44,14 @@ public class PlayerMovement : MonoBehaviour
         moveX = moveAction.action.ReadValue<float>();
         isJumping = jumpAction.action.WasPressedThisFrame();
         isPunching = punchAction.action.WasPressedThisFrame();
+   
     }
     void FixedUpdate()
     {
         X = moveX * speed;
         Y = rb.linearVelocity.y;
         Z = rb.linearVelocity.z;
-        if (isJumping)
+        if ((isJumping)&&(isGrounded))
         {
             Y = jumpForce;
         }
