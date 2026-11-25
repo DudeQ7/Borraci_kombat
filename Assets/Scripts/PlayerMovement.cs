@@ -2,25 +2,45 @@
 using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
-    public InputActionReference  moveAction, punchAction,jumpAction;
-
+    public Rigidbody rb;
+    public InputActionReference moveAction, punchAction, jumpAction;
+    private float moveX,X,Y,Z;
+    public float speed = 5f,jumpForce =10f;
+    private bool isJumping, isPunching;
+   
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();    
+    }
     private void OnEnable()
     {
-        inputAction.action.Enable();
+        moveAction.action.Enable();
         punchAction.action.Enable();
         jumpAction.action.Enable();
     }
-    private void OnDisable()
+    void OnDisable()
     {
-        inputAction.action.Disable();
+        moveAction.action.Disable();
         punchAction.action.Disable();
         jumpAction.action.Disable();
     }
-    private void Update()
+    void Update()
     {
-        private float moveX = moveAction.action.ReadValue<float>();
-        private bool isJumping = jumpAction.action.WasPressedThisFrame();
-        private bool isPunching = punchAction.action.WasPressedThisFrame();
+        moveX = moveAction.action.ReadValue<float>();
+        isJumping = jumpAction.action.WasPressedThisFrame();
+        isPunching = punchAction.action.WasPressedThisFrame();
+    }
+    void FixedUpdate()
+    {
+        X = moveX * speed;
+        Y = rb.linearVelocity.y;
+        Z = rb.linearVelocity.z;
+        if (isJumping)
+        {
+            Y = jumpForce;
+        }
+        rb.linearVelocity = new Vector3(X, Y, Z);
+        
     }
 }
 
