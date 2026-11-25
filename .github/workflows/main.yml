@@ -27,18 +27,18 @@ jobs:
           sudo apt-get clean
           df -h /
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: true
           fetch-depth: 0
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: Library
           key: Library-Win64-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: Library-Win64-
 
-      - uses: game-ci/unity-builder@v4
+      - uses: game-ci/unity-builder@v6
         id: build
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -49,7 +49,7 @@ jobs:
           buildsPath: Builds
           versioning: Semantic
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Boracci_kombat-v${{ steps.build.outputs.buildVersion }}-Win64
           path: Builds/StandaloneWindows64
@@ -58,7 +58,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: cd Builds/StandaloneWindows64 && zip -r ../../Boracci_kombat-v${{ steps.build.outputs.buildVersion }}-win64.zip .
 
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: v${{ steps.build.outputs.buildVersion }}
