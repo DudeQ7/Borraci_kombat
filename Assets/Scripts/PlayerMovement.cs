@@ -1,27 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-public class NewMonoBehaviour : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpHeight = 2f;
-    [SerializeField] private float gravity = -9.81f;
-    private CharacterController controller;
-    private Vector3 moveInput;
-    private Vector3 velocity;
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-     }
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-        Debug.Log($"Move Input: {moveInput}");
-    }
-    //dokoncz 5:20 - https://www.youtube.com/watch?v=qEtLamo_-_g 
-    void Update()
-    {
-        
-    }
+    public InputActionReference  moveAction, punchAction,jumpAction;
 
+    private void OnEnable()
+    {
+        inputAction.action.Enable();
+        punchAction.action.Enable();
+        jumpAction.action.Enable();
+    }
+    private void OnDisable()
+    {
+        inputAction.action.Disable();
+        punchAction.action.Disable();
+        jumpAction.action.Disable();
+    }
+    private void Update()
+    {
+        private float moveX = moveAction.action.ReadValue<float>();
+        private bool isJumping = jumpAction.action.WasPressedThisFrame();
+        private bool isPunching = punchAction.action.WasPressedThisFrame();
+    }
 }
 
